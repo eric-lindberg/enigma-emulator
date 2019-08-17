@@ -1,5 +1,5 @@
 import unittest
-from Deque_Rotor import Rotor
+from Rotor import Rotor
 
 
 class TestRotor(unittest.TestCase):

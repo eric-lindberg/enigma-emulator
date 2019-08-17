@@ -10,17 +10,17 @@ class Rotor():
     Rotor_V = collections.deque('VZBRGITYUPSDNHLXAWMJQOFECK')
     Rotor_RFL = collections.deque('YRUHQSLDPXNGOKMIEBFZCWVJAT')
 
-    rotorIds = ['I', 'II', 'III', 'IV', 'V', 'RFL']
+    rotor_ids = ['I', 'II', 'III', 'IV', 'V', 'RFL']
     #   "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
     def select_rotor(self, rotor_num):
         encoding = [ord(ch) for ch in self.wirings[rotor_num]]
         return np.array(encoding)
 
-    def __init__(self, rotorId, pos = '0', ring = '0'):
-        self.id = rotorId.upper()
-        assert self.id in self.rotorIds, "unrecognized Rotor ID " + self.id
-        rotor_num = self.rotorIds.index(self.id)
+    def __init__(self, rotor_id, pos = '0', ring = '0'):
+        self.id = rotor_id.upper()
+        assert self.id in self.rotor_ids, "unrecognized Rotor ID " + self.id
+        rotor_num = self.rotor_ids.index(self.id)
 
         self.wiring = self.select_rotor(rotor_num)
 
