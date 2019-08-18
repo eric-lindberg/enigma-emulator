@@ -12,17 +12,17 @@ class Rotor():
 
     rotor_ids = ['I', 'II', 'III', 'IV', 'V', 'RFL']
     #   "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
-    def select_rotor(self, rotor_num):
-        encoding = [ord(ch) for ch in self.wirings[rotor_num]]
-        return np.array(encoding)
+    #
+    # def select_rotor(self, rotor_num):
+    #     encoding = [ord(ch) for ch in self.wirings[rotor_num]]
+    #     return np.array(encoding)
 
     def __init__(self, rotor_id, pos = '0', ring = '0'):
         self.id = rotor_id.upper()
         assert self.id in self.rotor_ids, "unrecognized Rotor ID " + self.id
         rotor_num = self.rotor_ids.index(self.id)
 
-        self.wiring = self.select_rotor(rotor_num)
+        # self.wiring = self.select_rotor(rotor_num)
 
         self.position = int(pos)
         assert self.position >= 0 and self.position < 26, "Initial position must be between 0 and 25"
