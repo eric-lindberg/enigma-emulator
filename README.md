@@ -43,9 +43,13 @@ If you'd like to comment or let me know of any errors, please post them on the b
 
 TODO:  Purely as a Python learning exercise, implement the Rotors structure as Python deque objects.
 
-Working:  Basic_Deque_Rotor_Access.py  # Run it to access the Rotor Class from the Deque_Rotor.py file which is a
-compound List object with a Dict object, some ints, and 5 deque objects representing the Rotors of the Enigma Machine.
+This is the purpose of the deque branch.
+
+Working:  Basic_Deque_Rotor_Access.py
+
+Run it to access the Rotor Class from the Deque_Rotor.py file which is a compound List object with a
+Dict object, some ints, and 5 deque objects representing the Rotors of the Enigma Machine.
 
 What we don't want to do is access all the Rotor Characters as if they are in a 2D array.  We want to emulate the
-Rotationof the Rotors to simulate the mechanical function of the Enigma Machine.  Writing the deques as Rotors, we can
-easily simulate their Rotation, which should simply the index math of the original program.
+Rotation of the Rotors to simulate the mechanical function of the Enigma Machine.  Writing the deques as Rotors,
+we can easily simulate their Rotation, which should simplify the index math of the original program.
