@@ -4,24 +4,40 @@ import collections
 
 
 class TestRotor(unittest.TestCase):
-    def initRotorsArray(self, position='0', rings='0'):
-        rotors = []
+    def initRotorsArray(self):
 
-        rotors.append(Rotor('I', position, rings))
-        rotors.append(Rotor('II', position, rings))
-        rotors.append(Rotor('III', position, rings))
-        rotors.append(Rotor('IV', position, rings))
-        rotors.append(Rotor('V', position, rings))
+        # rotor = Rotor.Rotor
+        # self.assertEqual(Rotor[0,0], 'E')
+        # self.assertEqual(Rotor[1,0], 'A')
+        # self.assertEqual(Rotor[2,0], 'B')
+        # self.assertEqual(Rotor[3,0], 'E')
+        # self.assertEqual(Rotor[4,0], 'V')
+        # self.assertEqual(Rotor[5,0], 'Y')
 
-        return rotors
+        return rotor
 
     def testRotor(self):
-        rotors = collections.deque('EKMFLGDQVZNTOWYHXUSPAIBRCJ')
-        self.assertEqual(rotors[0], 'E')
-        rotors.rotate(-1)
-        self.assertEqual(rotors[0], 'K')
 
+        rotor = Rotor.Rotor
+        self.assertEqual(rotor(0, 0), 'E')
+        self.assertEqual(rotor(1, 0), 'A')
+        self.assertEqual(rotor(2, 0), 'B')
+        self.assertEqual(rotor(3, 0), 'E')
+        self.assertEqual(rotor(4, 0), 'V')
+        self.assertEqual(rotor(5, 0), 'Y')
 
+        # rotors = collections.deque('EKMFLGDQVZNTOWYHXUSPAIBRCJ')
+        # self.assertEqual(rotors[0], 'E')
+        # rotors.rotate(-1)
+        # self.assertEqual(rotors[0], 'K')
+
+        # , position = '0', rings = '0'):
+        # rotors = []
+        # rotors.append(Rotor('I', position, rings))
+        # rotors.append(Rotor('II', position, rings))
+        # rotors.append(Rotor('III', position, rings))
+        # rotors.append(Rotor('IV', position, rings))
+        # rotors.append(Rotor('V', position, rings))
         # alphabet = "ABCDEFGHIJKLMNOPQRSTUVWZYX"
         # rotors = self.initRotorsArray()
 

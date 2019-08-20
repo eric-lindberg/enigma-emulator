@@ -1,35 +1,46 @@
-import numpy as np
 import collections
 
 
-class Rotor():
-    Rotor_I = collections.deque('EKMFLGDQVZNTOWYHXUSPAIBRCJ')
-    Rotor_II = collections.deque('AJDKSIRUXBLHWTMCQGZNPYFVOE')
-    Rotor_III = collections.deque('BDFHJLCPRTXVZNYEIWGAKMUSQO')
-    Rotor_IV = collections.deque('ESOVPZJAYQUIRHXLNFTGKDCMWB')
-    Rotor_V = collections.deque('VZBRGITYUPSDNHLXAWMJQOFECK')
-    Rotor_RFL = collections.deque('YRUHQSLDPXNGOKMIEBFZCWVJAT')
+class Rotors:
 
-    rotor_ids = ['I', 'II', 'III', 'IV', 'V', 'RFL']
+    rotor_ids = {1: 'I', 2: 'II', 3: 'III', 4: 'IV', 5: 'V', 6: 'RFL'}
+    Rotor = [collections.deque('EKMFLGDQVZNTOWYHXUSPAIBRCJ'),
+             collections.deque('AJDKSIRUXBLHWTMCQGZNPYFVOE'),
+             collections.deque('BDFHJLCPRTXVZNYEIWGAKMUSQO'),
+             collections.deque('ESOVPZJAYQUIRHXLNFTGKDCMWB'),
+             collections.deque('VZBRGITYUPSDNHLXAWMJQOFECK'),
+             collections.deque('YRUHQSLDPXNGOKMIEBFZCWVJAT')]
+
+    def __init__(self, rotor_id, pos='0', ring='0'):
+
+        self.pos = pos
+        self.ring = ring
+        self.rotor_id = rotor_id
+
+
+
+
     #   "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     #
     # def select_rotor(self, rotor_num):
     #     encoding = [ord(ch) for ch in self.wirings[rotor_num]]
     #     return np.array(encoding)
 
-    def __init__(self, rotor_id, pos = '0', ring = '0'):
-        self.id = rotor_id.upper()
-        assert self.id in self.rotor_ids, "unrecognized Rotor ID " + self.id
-        rotor_num = self.rotor_ids.index(self.id)
+    # def __init__(self, rotor_id, pos = '0', ring = '0'):
+    #     self.id = rotor_id.upper()
+    #     assert self.id in self.rotor_ids, "unrecognized Rotor ID " + self.id
+    #     rotor_num = self.rotor_ids.index(self.id)
 
         # self.wiring = self.select_rotor(rotor_num)
 
-        self.position = int(pos)
-        assert self.position >= 0 and self.position < 26, "Initial position must be between 0 and 25"
-
-        self.ring = int(ring)
-        assert self.ring >= 0 and self.ring < 26, "Ring setting must be between 0 and 25"
-
+    # self.position = int(pos)
+    # assert self.position >= 0 and self.position < 26, \
+    #     "Initial position must be between 0 and 25"
+    #
+    # self.ring = int(ring)
+    # assert self.ring >= 0 and self.ring < 26, \
+    #     "Ring setting must be between 0 and 25"
+'''
     def advance(self):
         self.position += 1
         if self.position == 26:
@@ -56,3 +67,4 @@ class Rotor():
         chidx = np.where(self.wiring == idx + ord('A'))[0]
         chidx = (chidx + self.ring) % 26
         return chr(((chidx - self.position) % 26) + ord('A'))
+'''
