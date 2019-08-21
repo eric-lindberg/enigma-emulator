@@ -3,7 +3,7 @@ from Deque_Rotor import Rotors
 
 
 class TestRotor(unittest.TestCase):
-    def initRotorsArray(self):
+    def initRotorsArray(self):   # "Spawn Rotors Object"
 
         rotor = Rotors(1, 2, 3)
 
@@ -11,7 +11,7 @@ class TestRotor(unittest.TestCase):
 
     def testRotor(self):
 
-        rotor = Rotors(1, 2, 3)
+        rotor = self.initRotorsArray() # Rotors(1, 2, 3)
 
         self.assertEqual(rotor.rotor_id, 1)
         self.assertEqual(rotor.ring, 3)
