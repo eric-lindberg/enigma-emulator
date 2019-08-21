@@ -13,9 +13,9 @@ class Rotors:
 
     def __init__(self, rotor_id, pos='0', ring='0'):
 
+        self.rotor_id = rotor_id
         self.pos = pos
         self.ring = ring
-        self.rotor_id = rotor_id
 
 
 
