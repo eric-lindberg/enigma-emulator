@@ -3,12 +3,12 @@ from Deque_Rotor import Rotors
 rotor = Rotors(1,2,3)
 
 print(rotor.ring, rotor.pos, rotor.rotor_id)
-print(Rotors.Rotor[1][2])
+print(rotor.Rotor[1][2])
 
 for rotor_id in range(0, 5):
     for char_idx in range (0, 26):
         print(rotor_id, char_idx)
-        print(Rotors.Rotor[rotor_id][char_idx], end=" ")
+        print(rotor.Rotor[rotor_id][char_idx], end=" ")
 print()
 print(rotor.rotor_ids)
 print(rotor.rotor_ids[3])
