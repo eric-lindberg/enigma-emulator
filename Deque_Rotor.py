@@ -4,19 +4,18 @@ import collections
 class Rotors:
 
     rotor_ids = {1: 'I', 2: 'II', 3: 'III', 4: 'IV', 5: 'V', 6: 'RFL'}
-    Rotor = [collections.deque('EKMFLGDQVZNTOWYHXUSPAIBRCJ'),
-             collections.deque('AJDKSIRUXBLHWTMCQGZNPYFVOE'),
-             collections.deque('BDFHJLCPRTXVZNYEIWGAKMUSQO'),
-             collections.deque('ESOVPZJAYQUIRHXLNFTGKDCMWB'),
-             collections.deque('VZBRGITYUPSDNHLXAWMJQOFECK'),
-             collections.deque('YRUHQSLDPXNGOKMIEBFZCWVJAT')]
 
     def __init__(self, rotor_id, pos='0', ring='0'):
 
         self.rotor_id = rotor_id
         self.pos = pos
         self.ring = ring
-
+        self.Rotor = [collections.deque('EKMFLGDQVZNTOWYHXUSPAIBRCJ'),
+                      collections.deque('AJDKSIRUXBLHWTMCQGZNPYFVOE'),
+                      collections.deque('BDFHJLCPRTXVZNYEIWGAKMUSQO'),
+                      collections.deque('ESOVPZJAYQUIRHXLNFTGKDCMWB'),
+                      collections.deque('VZBRGITYUPSDNHLXAWMJQOFECK'),
+                      collections.deque('YRUHQSLDPXNGOKMIEBFZCWVJAT')]
 
 
 
