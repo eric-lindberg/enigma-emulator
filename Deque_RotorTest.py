@@ -1,42 +1,25 @@
 import unittest
 from Deque_Rotor import Rotors
+# Rotors is the Class, Rotor is the deques part of the Class,
+# rotor is the instanced (spawned) Object
 
 
 class TestRotor(unittest.TestCase):
     def initRotorsArray(self):   # "Spawn Rotors Object"
-
         rotor = Rotors(1, 2, 3)
-
         return rotor
 
     def testRotor(self):
 
-        rotor = self.initRotorsArray() # Rotors(1, 2, 3)
+        rotor = self.initRotorsArray()  # Rotors(1, 2, 3)
 
         self.assertEqual(rotor.rotor_id, 1)
         self.assertEqual(rotor.ring, 3)
         self.assertEqual(rotor.pos, 2)
+        self.assertEqual(rotor.Rotor[rotor.rotor_id][rotor.pos], "D")
+        rotor.Rotor[rotor.rotor_id].rotate(-1)
+        self.assertEqual(rotor.Rotor[rotor.rotor_id][rotor.pos], "K")
 
-    #     rotor = Rotor.Rotor
-    #     self.assertEqual(rotor(0, 0), 'E')
-    #     self.assertEqual(rotor(1, 0), 'A')
-    #     self.assertEqual(rotor(2, 0), 'B')
-    #     self.assertEqual(rotor(3, 0), 'E')
-    #     self.assertEqual(rotor(4, 0), 'V')
-    #     self.assertEqual(rotor(5, 0), 'Y')
-
-        # rotors = collections.deque('EKMFLGDQVZNTOWYHXUSPAIBRCJ')
-        # self.assertEqual(rotors[0], 'E')
-        # rotors.rotate(-1)
-        # self.assertEqual(rotors[0], 'K')
-
-        # , position = '0', rings = '0'):
-        # rotors = []
-        # rotors.append(Rotor('I', position, rings))
-        # rotors.append(Rotor('II', position, rings))
-        # rotors.append(Rotor('III', position, rings))
-        # rotors.append(Rotor('IV', position, rings))
-        # rotors.append(Rotor('V', position, rings))
         # alphabet = "ABCDEFGHIJKLMNOPQRSTUVWZYX"
         # rotors = self.initRotorsArray()
 

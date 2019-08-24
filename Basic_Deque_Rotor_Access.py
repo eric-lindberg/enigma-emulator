@@ -1,6 +1,7 @@
 from Deque_Rotor import Rotors
-
-rotor = Rotors(1,2,3)
+# Rotors is the Class, Rotor is the deques part of the Class,
+# rotor is the instanced (spawned) Object
+rotor = Rotors(1, 2, 3)
 
 print(rotor.ring, rotor.pos, rotor.rotor_id)
 print(rotor.Rotor[1][2])
@@ -22,22 +23,23 @@ print(rotor.rotor_ids.keys())
 
 '''
 # Python program to demonstrate   
-# accesing a element from a Dictionary  
+# accessing a element from a Dictionary  
   
 # Creating a Dictionary  
 Dict = {1: 'Geeks', 'name': 'For', 3: 'Geeks'} 
   
 # accessing a element using key 
-print("Acessing a element using key:") 
+print("Accessing a element using key:") 
 print(Dict['name']) 
   
 # accessing a element using key 
-print("Acessing a element using key:") 
+print("Accessing a element using key:") 
 print(Dict[1]) 
   
 # accessing a element using get() 
 # method 
-print("Acessing a element using get:") 
+print("Accessing a element using get:") 
+print("Accessing a element using get:") 
 print(Dict.get(3)) 
 
 '''
