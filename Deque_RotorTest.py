@@ -20,7 +20,7 @@ class TestRotor(unittest.TestCase):
 
         # Test Deque Rotor mechanisms
         self.assertEqual(len(rotor.Rotor), 6)  # Check for 6 Rotors
-        for rotor_id in range(0, 5):  # Check all Rotors for 26 characters
+        for rotor_id in range(5):  # Check all Rotors for 26 characters
             self.assertEqual(len(rotor.Rotor[rotor_id]), 26)
 
         # Test that every character in the Deque Rotor Object accessed by
@@ -39,8 +39,8 @@ class TestRotor(unittest.TestCase):
                   'H','L','X','A','W','M','J','Q','O','F','E','C','K'],
                  ['Y','R','U','H','Q','S','L','D','P','X','N','G','O',
                   'K','M','I','E','B','F','Z','C','W','V','J','A','T']]
-        for rotor_count in range(0, 5):
-            for chr_count in range(0, 25):
+        for rotor_count in range(5):
+            for chr_count in range(25):
                 self.assertEqual(rotor.Rotor[rotor_count][0],
                                  chars[rotor_count][chr_count])
                 print(rotor.Rotor[rotor_count][0], chars[rotor_count][chr_count])
