@@ -23,51 +23,38 @@ class TestRotor(unittest.TestCase):
         for rotor_id in range(0, 5):  # Check all Rotors for 26 characters
             self.assertEqual(len(rotor.Rotor[rotor_id]), 26)
 
-        for test in 'EKMFLGDQVZNTOWYHXUSPAIBRCJ':
-            self.assertEqual(rotor.Rotor[0][0], test)
-            print(rotor.Rotor[0][0], end=" ")
-            rotor.Rotor[0].rotate(-1)
-        print()
+        # Test that every character in the Deque Rotor Object accessed by
+        # Deque rotation is the same vs. this known good List of all the
+        # characters in all the Rotors in order
+        chr_count = 0
+        rotor_count = 0
+        for char in 'E','K','M','F','L','G','D','Q','V','Z','N','T','O', \
+                    'W','Y','H','X','U','S','P','A','I','B','R','C','J', \
+                    'A','J','D','K','S','I','R','U','X','B','L','H','W', \
+                    'T','M','C','Q','G','Z','N','P','Y','F','V','O','E', \
+                    'B','D','F','H','J','L','C','P','R','T','X','V','Z', \
+                    'N','Y','E','I','W','G','A','K','M','U','S','Q','O', \
+                    'E','S','O','V','P','Z','J','A','Y','Q','U','I','R', \
+                    'H','X','L','N','F','T','G','K','D','C','M','W','B', \
+                    'V','Z','B','R','G','I','T','Y','U','P','S','D','N', \
+                    'H','L','X','A','W','M','J','Q','O','F','E','C','K', \
+                    'Y','R','U','H','Q','S','L','D','P','X','N','G','O', \
+                    'K','M','I','E','B','F','Z','C','W','V','J','A','T':
+            self.assertEqual(rotor.Rotor[rotor_count][0], char)
+            print(rotor.Rotor[rotor_count][0], char, chr_count, rotor_count)
+            rotor.Rotor[rotor_count].rotate(-1)
+            chr_count += 1
+            if chr_count == 26:
+                rotor_count += 1
+                chr_count = 0
 
-        for test in 'AJDKSIRUXBLHWTMCQGZNPYFVOE':
-            self.assertEqual(rotor.Rotor[1][0], test)
-            print(rotor.Rotor[1][0], end=" ")
-            rotor.Rotor[1].rotate(-1)
-        print()
-
-        for test in 'BDFHJLCPRTXVZNYEIWGAKMUSQO':
-            self.assertEqual(rotor.Rotor[2][0], test)
-            print(rotor.Rotor[2][0], end=" ")
-            rotor.Rotor[2].rotate(-1)
-        print()
-
-        for test in 'ESOVPZJAYQUIRHXLNFTGKDCMWB':
-            self.assertEqual(rotor.Rotor[3][0], test)
-            print(rotor.Rotor[3][0], end=" ")
-            rotor.Rotor[3].rotate(-1)
-        print()
-
-        for test in 'VZBRGITYUPSDNHLXAWMJQOFECK':
-            self.assertEqual(rotor.Rotor[4][0], test)
-            print(rotor.Rotor[4][0], end=" ")
-            rotor.Rotor[4].rotate(-1)
-        print()
-
-        for test in 'YRUHQSLDPXNGOKMIEBFZCWVJAT':
-            self.assertEqual(rotor.Rotor[5][0], test)
-            print(rotor.Rotor[5][0], end=" ")
-            rotor.Rotor[5].rotate(-1)
-'''
-
-    # alphabet = "ABCDEFGHIJKLMNOPQRSTUVWZYX"
-    # rotors = self.initRotorsArray()
-
+    # TODO:
     # Test forward mapping with position and rings at 0
     # def testForwardMapping(self):
     #     rotors = self.initRotorsArray()
-    #     rotors.append(Rotor('RFL', '0', '0'))  # Test Reflector as well
+    #     rotors.append(Rotor('RFL','0','0'))  # Test Reflector as well
 
-
+'''
         letters = "EABEVY"
 
         rotor_idx = 0
