@@ -17,6 +17,7 @@ class Rotors:
                       collections.deque('VZBRGITYUPSDNHLXAWMJQOFECK'),
                       collections.deque('YRUHQSLDPXNGOKMIEBFZCWVJAT')]
 
+    def advance(self):
 
 
     #   "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
