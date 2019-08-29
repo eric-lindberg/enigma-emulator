@@ -17,25 +17,24 @@ three-rotor configurations.
 
 # Implement full Deque_Rotor class here
 class Rotor():
-    def __init__(self, rotor_id: str, mapping: str):
+    def __init__(self, mapping: str):
         self.rotor = deque(mapping)
-        self.id = rotor_id
         self.position = 0
         self.ring = 0
 
 
 class Rotors():
     available_rotors = {
-        'I': Rotor('I', 'EKMFLGDQVZNTOWYHXUSPAIBRCJ'),
-        'II': Rotor('II', 'AJDKSIRUXBLHWTMCQGZNPYFVOE'),
-        'III': Rotor('III', 'BDFHJLCPRTXVZNYEIWGAKMUSQO'),
-        'IV': Rotor('IV', 'ESOVPZJAYQUIRHXLNFTGKDCMWB'),
-        'V': Rotor('V', 'VZBRGITYUPSDNHLXAWMJQOFECK')
+        'I': Rotor('EKMFLGDQVZNTOWYHXUSPAIBRCJ'),
+        'II': Rotor('AJDKSIRUXBLHWTMCQGZNPYFVOE'),
+        'III': Rotor('BDFHJLCPRTXVZNYEIWGAKMUSQO'),
+        'IV': Rotor('ESOVPZJAYQUIRHXLNFTGKDCMWB'),
+        'V': Rotor('VZBRGITYUPSDNHLXAWMJQOFECK')
     }
 
     assigned_rotors = {}
 
-    reflector = Rotor('RFL', 'YRUHQSLDPXNGOKMIEBFZCWVJAT')
+    reflector = Rotor('YRUHQSLDPXNGOKMIEBFZCWVJAT')
 
     @staticmethod
     def getRotor(rotor_id: str, pos: int, ring: int):
