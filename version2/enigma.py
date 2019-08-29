@@ -93,27 +93,15 @@ class Enigma():
     def encode_char(self, inch: str):
         assert inch.isalpha()
 
-        # Swap input character with plugboard setting
         outch = self.plugboard.get_wiring(inch.upper())
         self.advance_rotors()
-
-        # Forward Rotor encodings
         for rotor in self.rotors:
             outch = rotor.forward_encode(outch)
-
-        # Reflector encoding
         outch = self.reflector.forward_encode(outch)
-
-        # Reverse Rotor encodings
         for rotor in reversed(self.rotors):
             outch = rotor.backward_encode(outch)
-
-        # Final swap with plugboard settings
         outch = self.plugboard.get_wiring(outch)
-
-        # Validate no character ever codes to itself
         assert outch != inch.upper(),"Error - character coded to itself"
-        # self.advance_rotors()
 
         return outch
 
