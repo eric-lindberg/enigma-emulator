@@ -17,15 +17,8 @@ class Rotors:
                       collections.deque('VZBRGITYUPSDNHLXAWMJQOFECK'),
                       collections.deque('YRUHQSLDPXNGOKMIEBFZCWVJAT')]
 
-    def forward_encode(self, ch, rotor_id):
-        assert ch.isalpha()
-        ch = ch.upper()
-        chidx = ord(ch) - ord('A') + int(self.pos) + int(self.ring)
-        # Adjust idx for rings (need to review ring model)
-        return self.Rotor[rotor_id][chidx]
+    def advance(self):
 
-    def advance(self, rotor_id):
-        self.Rotor[rotor_id].rotate(-1)
 
     #   "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     #
@@ -48,8 +41,21 @@ class Rotors:
     # assert self.ring >= 0 and self.ring < 26, \
     #     "Ring setting must be between 0 and 25"
 '''
+    def advance(self):
+        self.position += 1
+        if self.position == 26:
+            self.position = 0
 
-
+    def forward_encode(self, ch):
+        assert ch.isalpha()
+        ch = ch.upper()
+        chidx = ord(ch) - ord('A')
+        idx = (chidx + self.position) % 26
+        idx = (idx - self.ring) % 26
+        # Adjust idx for rings (need to review ring model)
+        chidx = self.wiring[idx] - ord('A')
+        chidx = (chidx + self.ring) % 26
+        return chr(((chidx - self.position) % 26) + ord('A'))
 
     def backward_encode(self, ch):
         assert ch.isalpha()

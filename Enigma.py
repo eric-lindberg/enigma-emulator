@@ -1,6 +1,6 @@
 import sys
 from configparser import ConfigParser
-from Rotor import Rotor
+from Deque_Rotor import Rotors
 from Plugboard import PlugBoard
 
 '''
@@ -17,25 +17,25 @@ class Enigma():
 
     def __init__(self, settings):
 
-        self.rotor1 = Rotor(settings['rotors']['rotor1'],
-                            settings['rotors']['rotor1Pos'],
-                            settings['rotors']['rotor1Ring'])
+        self.rotor1 = Rotors(settings['rotors']['rotor1'].upper(),
+                             settings['rotors']['rotor1Pos'],
+                             settings['rotors']['rotor1Ring'])
 
-        self.rotor2 = Rotor(settings['rotors']['rotor2'],
-                            settings['rotors']['rotor2Pos'],
-                            settings['rotors']['rotor2Ring'])
+        self.rotor2 = Rotors(settings['rotors']['rotor2'].upper(),
+                             settings['rotors']['rotor2Pos'],
+                             settings['rotors']['rotor2Ring'])
 
-        self.rotor3 = Rotor(settings['rotors']['rotor3'],
-                            settings['rotors']['rotor3Pos'],
-                            settings['rotors']['rotor3Ring'])
+        self.rotor3 = Rotors(settings['rotors']['rotor3'].upper(),
+                             settings['rotors']['rotor3Pos'],
+                             settings['rotors']['rotor3Ring'])
 
         self.reflector = Rotor('RFL')
 
         self.plugboard = PlugBoard(settings['plugboard'])
 
-        assert self.rotor1.id != self.rotor2.id and \
-               self.rotor1.id != self.rotor3.id and \
-               self.rotor2.id != self.rotor3.id, \
+        assert self.rotor1.rotor_id != self.rotor2.rotor_id and \
+               self.rotor1.rotor_id != self.rotor3.rotor_id and \
+               self.rotor2.rotor_id != self.rotor3.rotor_id, \
                "Identical rotors may not be used in one machine"
 
     '''
