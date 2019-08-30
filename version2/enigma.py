@@ -1,6 +1,7 @@
 from typing import Dict, Any
-from collections import deque
 from configparser import ConfigParser
+from version2.plugboard import Plugboard
+from version2.rotor import Rotors
 import sys
 
 '''
@@ -15,52 +16,6 @@ three-rotor configurations.
 '''
 
 
-# Implement full Deque_Rotor class here
-class Rotor():
-    def __init__(self, mapping: str):
-        self.rotor = deque(mapping)
-        self.position = 0
-        self.ring = 0
-
-
-class Rotors():
-    available_rotors = {
-        'I': Rotor('EKMFLGDQVZNTOWYHXUSPAIBRCJ'),
-        'II': Rotor('AJDKSIRUXBLHWTMCQGZNPYFVOE'),
-        'III': Rotor('BDFHJLCPRTXVZNYEIWGAKMUSQO'),
-        'IV': Rotor('ESOVPZJAYQUIRHXLNFTGKDCMWB'),
-        'V': Rotor('VZBRGITYUPSDNHLXAWMJQOFECK')
-    }
-
-    assigned_rotors = {}
-
-    reflector = Rotor('YRUHQSLDPXNGOKMIEBFZCWVJAT')
-
-    @staticmethod
-    def getRotor(rotor_id: str, pos: int, ring: int):
-        if rotor_id in Rotors.available_rotors:
-            rotor = Rotors.available_rotors[rotor_id]
-            Rotors.assigned_rotors[rotor_id] = rotor
-            del(Rotors.available_rotors[rotor_id])
-        else:
-            raise ValueError(f'Rotor ID {rotor_id} does not exist or has been assigned')
-
-        rotor.position = pos
-        rotor.ring = ring
-
-        return rotor
-
-class Plugboard():
-    def __init__(self, wirings: Dict[str, str]):
-        self.wiring = {}
-        for key in wirings:
-            assert key.upper() not in self.wiring and \
-                   wirings[key] not in self.wiring,\
-                   "Plugboard may not wire same key twice"
-            self.wiring[key.upper()] = wirings[key]
-            self.wiring[wirings[key]] = key.upper()
-
-
 class Enigma():
     def __init__(self, settings: Dict[str, Any]):
         self.rotors = []
@@ -70,17 +25,17 @@ class Enigma():
         if 'rotor4' in settings:
             self.add_rotor(settings['rotor4'])
         self.reflector = Rotors.reflector
-        self.plugboard = Plugboard(settings['plugboard']._sectors)
+        self.plugboard = Plugboard(settings['plugboard'])
 
     def add_rotor(self, rotor_settings: Dict[str, Any]):
         rotor_id = rotor_settings['number']
-        position = rotor_settings['position']
-        ring = rotor_settings['ring']
+        position = int(rotor_settings['position'])
+        ring = int(rotor_settings['ring'])
         self.rotors.append(Rotors.getRotor(rotor_id=rotor_id,
                                           pos=position,
                                           ring=ring))
 
-    def advance_rotors(self):
+    def advance_rotors(self) -> None:
         offset = 0
         while True:
             self.rotors[offset].advance()
@@ -89,7 +44,7 @@ class Enigma():
             else:
                 return
 
-    def encode_char(self, inch: str):
+    def encode_char(self, inch: str) -> str:
         assert inch.isalpha()
 
         outch = self.plugboard.get_wiring(inch.upper())
@@ -103,6 +58,14 @@ class Enigma():
         assert outch != inch.upper(),"Error - character coded to itself"
 
         return outch
+
+
+    def encode(self, message: str) -> str:
+        outstr = ''
+        for c in message:
+            outstr += self.encode_char(c)
+
+        return outstr
 
 
 if __name__ == '__main__':
