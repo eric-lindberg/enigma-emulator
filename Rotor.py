@@ -24,10 +24,12 @@ class Rotor():
         self.wiring = self.selectRotor(rotorNum)
 
         self.position = int(pos)
-        assert self.position >= 0 and self.position < 26, "Initial position must be between 0 and 25"
+        assert self.position >= 0 and self.position < 26, \
+            "Initial position must be between 0 and 25"
 
         self.ring = int(ring)
-        assert self.ring >= 0 and self.ring < 26, "Ring setting must be between 0 and 25"
+        assert self.ring >= 0 and self.ring < 26, \
+            "Ring setting must be between 0 and 25"
 
     def advance(self):
         self.position += 1

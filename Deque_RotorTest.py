@@ -6,7 +6,7 @@ from Deque_Rotor import Rotors
 
 class TestRotor(unittest.TestCase):
     def initRotorsArray(self):   # "Spawn Rotors Object"
-        rotor = Rotors(1, 2, 3)
+        rotor = Rotors(0, 0, 0)
         return rotor
 
     def testRotor(self):
@@ -14,9 +14,9 @@ class TestRotor(unittest.TestCase):
         rotor = self.initRotorsArray()  # Rotors(1, 2, 3)
 
         # Check Rotor controls
-        self.assertEqual(rotor.rotor_id, 1)
-        self.assertEqual(rotor.ring, 3)
-        self.assertEqual(rotor.pos, 2)
+        self.assertEqual(rotor.rotor_id, 0)
+        self.assertEqual(rotor.ring, 0)
+        self.assertEqual(rotor.pos, 0)
 
         # Test Deque Rotor mechanisms
         self.assertEqual(len(rotor.Rotor), 6)  # Check for 6 Rotors
@@ -49,17 +49,23 @@ class TestRotor(unittest.TestCase):
     # TODO:
     # Test forward mapping with position and rings at 0
     # def testForwardMapping(self):
-    #     rotors = self.initRotorsArray()
+        rotor = self.initRotorsArray()
     #     rotors.append(Rotor('RFL','0','0'))  # Test Reflector as well
 
-'''
-        letters = "EABEVY"
+        inchrs = "EABEVY"
+        # outchrs = "ZDPUQZ"  # Result from master Enigma.py
+        outchrs = "LEKLIC"   # Rotor I Only Result
+        chidx = 0
+        rotor_id = 0
+        for inchr in inchrs:
+            self.assertEqual(rotor.forward_encode(inchrs[chidx],
+                             rotor_id), outchrs[chidx])
+            # assert rotor.forward_encode(inchrs[chidx], 0) == outchrs[chidx], \
+            #     "Failed to encode letter correctly"
+            chidx += 1
 
-        rotor_idx = 0
-        for rotor in rotors:
-            assert rotor.forward_encode('A') == letters[rotor_idx], \
-                "Failed to encode letter correctly"
-            rotor_idx += 1
+
+'''
 
     # Test forward mapping with position change
     def testForwardAdvance(self):
