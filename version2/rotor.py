@@ -9,6 +9,31 @@ class Rotor():
         self.position = 0
         self.ring = 0
 
+    def advance(self):
+        self.position = (self.position + 1) % 26
+
+    def forward_encode(self, ch):
+        """
+        TO BE IMPLEMENTED
+        1.) Get the index of the input character, adjusted for position
+        1a.) (subtract the ring position)
+        2.) Get the character at the index position in the wiring.
+        2a.) (add the ring position)
+        3.) Return that character, minus the position.
+        """
+
+    def backward_encode(self, ch):
+        """
+        TO BE IMPLEMENTED
+        1.) Get the index of the input character, adjusted for position
+        1a.) (subtract the ring position)
+        2.) Get the index of the adjusted character in the wiring.
+        2a.) (add the ring position)
+        3.) Subtract the position from the index and return the alphabetic
+            character at that index. (For example, a result index of 5 would
+            return the character "F")
+        """
+
 
 class Rotors():
     available_rotors = {
