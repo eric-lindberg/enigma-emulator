@@ -1,5 +1,3 @@
-import numpy as np
-
 class Rotor():
     rotorIds = ['I', 'II', 'III', 'IV', 'V', 'RFL']
     #   "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -14,7 +12,7 @@ class Rotor():
 
     def selectRotor(self, rotorNum):
         encoding = [ord(ch) for ch in self.wirings[rotorNum]]
-        return np.array(encoding)
+        return encoding
 
     def __init__(self, rotorId, pos = '0', ring = '0'):
         self.id = rotorId.upper()
@@ -54,6 +52,7 @@ class Rotor():
         idx = (chidx + self.position) % 26
         idx = (idx - self.ring) % 26
         # Adjust idx for rings (need to review ring model)
-        chidx = np.where(self.wiring == idx + ord('A'))[0]
+        # chidx = np.where(self.wiring == idx + ord('A'))[0][0]
+        chidx = self.wiring.index(idx + ord('A'))
         chidx = (chidx + self.ring) % 26
         return chr(((chidx - self.position) % 26) + ord('A'))
